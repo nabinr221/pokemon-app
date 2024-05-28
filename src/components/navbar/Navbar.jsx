@@ -1,8 +1,15 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import InputField from '../inputField/InputField';
 
+/**
+ * MobileMenuButton Component
+ * Renders the mobile menu button and handles the menu toggle action.
+ *
+ * @param {Object} props - Component props
+ * @param {Function} props.toggleMenu - Function to toggle the mobile menu visibility
+ */
 const MobileMenuButton = ({ toggleMenu }) => (
   <div className="md:hidden flex items-center">
     <button className="outline-none mobile-menu-button" onClick={toggleMenu}>
@@ -25,6 +32,10 @@ MobileMenuButton.propTypes = {
   toggleMenu: PropTypes.func.isRequired,
 };
 
+/**
+ * Logo Component
+ * Renders the website logo with a link to the home page.
+ */
 const Logo = () => (
   <NavLink to="/" className="flex items-center py-4 px-2">
     <span className="font-semibold capitalize text-blue-800 text-lg">
@@ -33,12 +44,23 @@ const Logo = () => (
   </NavLink>
 );
 
+/**
+ * DesktopInputField Component
+ * Renders the input field for desktop view.
+ */
 const DesktopInputField = () => (
   <div className="w-full sm:w-[40%] hidden md:flex">
     <InputField />
   </div>
 );
 
+/**
+ * MobileMenu Component
+ * Renders the mobile menu with an input field when the menu is open.
+ *
+ * @param {Object} props - Component props
+ * @param {boolean} props.isOpen - Boolean indicating if the mobile menu is open
+ */
 const MobileMenu = ({ isOpen }) => (
   <div
     className={`${isOpen ? 'block' : 'hidden'} mobile-menu w-[90%] py-5 px-3`}
@@ -47,20 +69,35 @@ const MobileMenu = ({ isOpen }) => (
   </div>
 );
 
+MobileMenu.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+};
+
+/**
+ * Navbar Component
+ * Renders the main navigation bar with logo, input field, and mobile menu button.
+ * Includes functionality to toggle the mobile menu.
+ */
 const Navbar = () => {
+  // State to manage the visibility of the mobile menu
   const [isOpen, setIsOpen] = useState(false);
 
+  // Function to toggle the mobile menu visibility
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
     <nav className="bg-white shadow-lg">
       <div className="sm:w-[80%] mx-auto py-1 px-4">
         <div className="flex items-center justify-between">
+          {/* Logo */}
           <Logo />
+          {/* Input field for desktop view */}
           <DesktopInputField />
+          {/* Mobile menu button */}
           <MobileMenuButton toggleMenu={toggleMenu} />
         </div>
       </div>
+      {/* Mobile menu */}
       <MobileMenu isOpen={isOpen} />
     </nav>
   );
