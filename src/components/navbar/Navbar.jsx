@@ -45,27 +45,29 @@ const Logo = () => (
 );
 
 /**
- * DesktopInputField Component
- * Renders the input field for desktop view.
+ * DesktopMenu Component
+ * Renders the navitem for desktop view.
  */
-const DesktopInputField = () => (
+const DesktopMenu = () => (
   <div className="w-full sm:w-[40%] hidden md:flex">
-    <InputField />
+    <NavLink className="block font-semibold" to="/">
+      Home
+    </NavLink>
   </div>
 );
 
 /**
  * MobileMenu Component
- * Renders the mobile menu with an input field when the menu is open.
+ * Renders the mobile menu items when the menu is open.
  *
  * @param {Object} props - Component props
  * @param {boolean} props.isOpen - Boolean indicating if the mobile menu is open
  */
 const MobileMenu = ({ isOpen }) => (
-  <div
-    className={`${isOpen ? 'block' : 'hidden'} mobile-menu w-[90%] py-5 px-3`}
-  >
-    <InputField />
+  <div className={`${isOpen ? 'block' : 'hidden'} w-[90%] mx-auto pb-2 px-3`}>
+    <NavLink className="block font-semibold" to="/">
+      Home
+    </NavLink>
   </div>
 );
 
@@ -92,7 +94,7 @@ const Navbar = () => {
           {/* Logo */}
           <Logo />
           {/* Input field for desktop view */}
-          <DesktopInputField />
+          <DesktopMenu />
           {/* Mobile menu button */}
           <MobileMenuButton toggleMenu={toggleMenu} />
         </div>

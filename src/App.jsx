@@ -1,6 +1,8 @@
-import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ClientLayout from './layout/ClientLayout';
+import { lazy } from 'react';
+
+const HomePage = lazy(() => import('./pages/home/HomePage'));
 
 function App() {
   const router = createBrowserRouter([
@@ -10,7 +12,7 @@ function App() {
       children: [
         {
           index: true,
-          element: <h1>this is home page</h1>,
+          element: <HomePage />,
         },
       ],
     },
