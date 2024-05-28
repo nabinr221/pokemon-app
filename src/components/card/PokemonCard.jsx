@@ -13,7 +13,7 @@ const PokemonCard = ({ pokemon }) => {
   return (
     <div className="shadow-lg border-2">
       {/* Image container */}
-      <div className="w-full h-[15rem]">
+      <div className="w-full h-auto sm:h-[15rem]">
         <img
           src={pokemon?.image}
           alt={pokemon?.name}

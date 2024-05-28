@@ -3,8 +3,8 @@ import Title from '../../components/title/Title';
 
 const HomePage = () => {
   return (
-    <div className="w-[90%] sm:w-[80%] mx-auto my-10">
-      <Title title="Pokemon List" className="mb-10" />
+    <div className="w-[90%] sm:w-[80%] mx-auto space-y-5 my-10">
+      <Title title="Pokemon List" className=" w-full" />
       <PokemonList />
     </div>
   );

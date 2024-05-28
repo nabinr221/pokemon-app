@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import InputField from '../inputField/InputField';
 
 /**
  * MobileMenuButton Component
